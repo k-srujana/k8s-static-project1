@@ -1,0 +1,18 @@
+replicaCount: 2
+
+image:
+  repository: srujana97/static-devops
+  tag: v2
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  nodePort: 30007
+
+hpa:
+  minReplicas: 2
+  maxReplicas: 5
+  cpu: 50
+
+persistence:
+  size: 1Gi
