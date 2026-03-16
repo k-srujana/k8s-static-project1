@@ -21,7 +21,7 @@ pipeline {
      usernameVariable: 'USER',
      passwordVariable: 'PASS')]) {
 
-     bat "docker login -u %USER% -p %PASS%"
+     bat "echo %PASS% | docker login -u %USER% --password-stdin"
      bat "docker push %IMAGE%:%TAG%"
     }
    }
@@ -29,7 +29,7 @@ pipeline {
 
   stage('Deploy') {
    steps {
-    bat "helm upgrade static-app static-app --set image.tag=%TAG%"
+    bat "helm upgrade static-app static-app --set image.repository=srujana97/static-devops --set image.tag=%TAG%"
    }
   }
 
