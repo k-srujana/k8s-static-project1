@@ -27,9 +27,17 @@ pipeline {
    }
   }
 
-  stage('Deploy') {
+  stage('Deploy to Kubernetes') {
    steps {
-    bat "helm upgrade static-app static-app --set image.repository=srujana97/static-devops --set image.tag=%TAG%"
+
+    bat """
+    set KUBECONFIG=C:\\Users\\shire\\.kube\\config
+    kubectl get pods
+    helm upgrade --install static-app static-app ^
+      --set image.repository=srujana97/static-devops ^
+      --set image.tag=%TAG%
+    """
+
    }
   }
 
