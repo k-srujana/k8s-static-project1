@@ -9,12 +9,6 @@ pipeline {
 
  stages {
 
-  stage('Clone') {
-   steps {
-    git 'https://github.com/k-srujana/k8s-static-project1.git'
-   }
-  }
-
   stage('Build Docker Image') {
    steps {
     bat "docker build -t %IMAGE%:%TAG% ."
