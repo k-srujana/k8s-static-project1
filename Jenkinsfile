@@ -3,7 +3,7 @@ pipeline {
  agent any
 
  environment {
-  IMAGE = "k-srujana/static-devops"
+  IMAGE = "k-srujana/k8s-static-project1"
   TAG = "${BUILD_NUMBER}"
  }
 
